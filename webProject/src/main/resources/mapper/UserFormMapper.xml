@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sevenbulb.webproject.dao.UserFormMapper">
+    <resultMap id="BaseResultMap" type="com.sevenbulb.webproject.entity.UserForm">
+        <id column="FormId" jdbcType="BIGINT" property="FormId"/>
+        <result column="Title" jdbcType="VARCHAR" property="Title"/>
+        <result column="Description" jdbcType="LONGVARCHAR" property="Description"/>
+        <result column="Contributor" jdbcType="VARCHAR" property="Contributor"/>
+        <result column="Email" jdbcType="VARCHAR" property="Email"/>
+        <result column="Source" jdbcType="VARCHAR" property="Source"/>
+        <result column="URL" jdbcType="VARCHAR" property="URL"/>
+        <result column="ToolFile" jdbcType="VARCHAR" property="ToolFile"/>
+        <result column="ImgFile" jdbcType="VARCHAR" property="ImgFile"/>
+        <result column="Thumbnail" jdbcType="VARCHAR" property="Thumbnail"/>
+        <result column="Industry" jdbcType="VARCHAR" property="Industry"/>
+        <result column="Type" jdbcType="VARCHAR" property="Type"/>
+        <result column="Themes" jdbcType="VARCHAR" property="Themes"/>
+        <result column="Organizations" jdbcType="VARCHAR" property="Organizations"/>
+        <result column="Country" jdbcType="VARCHAR" property="Country"/>
+        <result column="Region" jdbcType="VARCHAR" property="Region"/>
+        <result column="Language" jdbcType="VARCHAR" property="Language"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+
+    <insert id="insertSelective" parameterType="com.sevenbulb.webproject.entity.UserForm">
+        insert into submit
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="FormId != null">
+                id,
+            </if>
+            <if test="Title!= null">
+                title,
+            </if>
+            <if test="Description != null">
+                description,
+            </if>
+            <if test="Contributor != null">
+                contributor,
+            </if>
+            <if test="Email != null">
+                email,
+            </if>
+            <if test="Source!= null">
+                source,
+            </if>
+            <if test="URL != null">
+                url,
+            </if>
+            <if test="ToolFile != null">
+                tool_file,
+            </if>
+            <if test="Thumbnail != null">
+                thumbnail,
+            </if>
+            <if test="Industry != null">
+                industry,
+            </if>
+            <if test="Themes != null">
+                themes,
+            </if>
+            <if test="Organizations != null">
+                organizations,
+            </if>
+            <if test="Country != null">
+                country,
+            </if>
+            <if test="Region != null">
+                region,
+            </if>
+            <if test="Language != null">
+                language,
+            </if>
+            <if test="createTime != null">
+                createtime,
+            </if>
+            <if test="ImgFile != null">
+                img_file,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="FormId != null">
+                #{id},
+            </if>
+            <if test="Title!= null">
+                #{Title},
+            </if>
+            <if test="Description != null">
+                #{Description},
+            </if>
+            <if test="Contributor != null">
+                #{Contributor},
+            </if>
+            <if test="Email != null">
+                #{Email},
+            </if>
+            <if test="Source!= null">
+                #{Source},
+            </if>
+            <if test="URL != null">
+                #{URL},
+            </if>
+            <if test="ToolFile != null">
+                #{ToolFile},
+            </if>
+            <if test="Thumbnail != null">
+                #{Thumbnail},
+            </if>
+            <if test="Industry != null">
+                #{Industry},
+            </if>
+            <if test="Themes != null">
+                #{Themes},
+            </if>
+            <if test="Organizations != null">
+                #{Organizations},
+            </if>
+            <if test="Country != null">
+                #{Country},
+            </if>
+            <if test="Region != null">
+                #{Region},
+            </if>
+            <if test="Language != null">
+                #{Language},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="ImgFile != null">
+                #{ImgFile},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"></update>
+    <select id="selectByPrimaryKey" resultType="com.sevenbulb.webproject.entity.UserForm"></select>
+</mapper>

@@ -1,0 +1,216 @@
+/**************************************************
+* main.tsx
+**************************************************/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+/**************************************************
+* App.tsx
+**************************************************/
+.app>.container {
+    margin: 0 auto;
+    max-width: 95%;
+}
+
+.app>.widgets {
+    border: 0.25rem solid #000000;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 5rem 0 0 0;
+}
+
+.app>.widgets>.widget {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    place-items: center;
+}
+
+.app>.widgets>.widget a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.app>.widgets>.widget a>.linkedin {
+    height: 2rem;
+}
+
+.app>.footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
+/**************************************************
+* Navbar.tsx
+**************************************************/
+.nav {
+    align-items: center;
+    background-color: #888888;
+    border: 0.25rem solid #000000;
+    display: flex;
+    height: 10rem;
+    justify-content: space-between;
+    padding: 1rem;
+    user-select: none;
+}
+
+.nav>.cceac {
+    height: 100%
+}
+
+.nav ul>.link {
+    border-radius: 1.5rem;
+    color: #000000;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    text-decoration: none;
+}
+
+.nav ul>.link.active {
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.nav ul>.link:not(.active):hover {
+    background-color: #ffffff;
+    text-decoration: underline;
+}
+
+/**************************************************
+* Submit.tsx
+**************************************************/
+.submit form>.contribute {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.submit form>.contribute button {
+    background-color: #8b0000;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.submit form>.contribute button:active,
+.submit form>.contribute button:active:hover {
+    background-color: #ffffff;
+    border: 0.1rem solid #006a6a;
+    color: #006a6a;
+}
+
+.submit form>.contribute button:hover {
+    background-color: #006a6a;
+}
+
+.submit>.tutorial {
+    display: grid;
+    place-items: center;
+}
+
+.submit>.tutorial h1 {
+    color: #006a6a;
+    text-align: center;
+}
+
+.submit>.tutorial video {
+    height: 27rem;
+    width: 48rem;
+}
+
+/**************************************************
+* ProgressBar.tsx
+**************************************************/
+.progress {
+    display: flex;
+}
+
+.progress>.label {
+    border: 0.1rem solid #000000;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    user-select: none;
+    width: calc(100% / 9);
+}
+
+.progress>.label.bookmark {
+    background-color: #ffff00;
+    text-decoration: underline;
+}
+
+.progress>.label.future {
+    background-color: #888888;
+    pointer-events: none;
+}
+
+.progress>.label.past {
+    background-color: #008800;
+}
+
+.progress>.label.present {
+    background-color: #0088ff;
+    font-weight: bold;
+}
+
+/**************************************************
+* ContributorForm.tsx
+* ToolForm.tsx
+**************************************************/
+
+/**************************************************
+* TypeForm.tsx
+* IndustryForm.tsx
+* ThemeForm.tsx
+* OrganizationForm.tsx
+**************************************************/
+
+/**************************************************
+* CountryForm.tsx
+**************************************************/
+
+/**************************************************
+* LanguageForm.tsx
+**************************************************/
+
+/**************************************************
+* SubmitForm.tsx
+**************************************************/
+.review h1 {
+    color: #8b0000;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.review>.section {
+    border: 0.1rem solid #000000;
+    margin: 1rem auto;
+    max-width: 75%;
+}
+
+.review>.section h2 {
+    color: #006a6a;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.review>.section>.field {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 1rem;
+}
+
+.review>.section>.field label {
+    text-align: center;
+}

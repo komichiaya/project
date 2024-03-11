@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sevenbulb.webproject.dao.AdminReviewFormMapper">
+    <resultMap id="BaseResultMap" type="com.sevenbulb.webproject.entity.UserForm">
+        <id column="FormId" jdbcType="BIGINT" property="FormId"/>
+        <result column="Title" jdbcType="VARCHAR" property="Title"/>
+        <result column="Description" jdbcType="LONGVARCHAR" property="Description"/>
+        <result column="Contributor" jdbcType="VARCHAR" property="Contributor"/>
+        <result column="Email" jdbcType="VARCHAR" property="Email"/>
+        <result column="Source" jdbcType="VARCHAR" property="Source"/>
+        <result column="URL" jdbcType="VARCHAR" property="URL"/>
+        <result column="ToolFile" jdbcType="VARCHAR" property="ToolFile"/>
+        <result column="Thumbnail" jdbcType="VARCHAR" property="Thumbnail"/>
+        <result column="Industry" jdbcType="VARCHAR" property="Industry"/>
+        <result column="Type" jdbcType="VARCHAR" property="Type"/>
+        <result column="Themes" jdbcType="VARCHAR" property="Themes"/>
+        <result column="Organizations" jdbcType="VARCHAR" property="Organizations"/>
+        <result column="Country" jdbcType="VARCHAR" property="Country"/>
+        <result column="Region" jdbcType="VARCHAR" property="Region"/>
+        <result column="Language" jdbcType="VARCHAR" property="Language"/>
+        <result column="ReviewType" jdbcType="INTEGER" property="review_Type"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sevenbulb.webproject.entity.UserForm">
+        <result column="form_detail_content" jdbcType="LONGVARCHAR" property="formDetailContent"/>
+    </resultMap>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+        select *
+        from submit
+        where id = #{FormId}
+    </select>
+    <select id="findFormList" resultType="com.sevenbulb.webproject.entity.UserForm">
+        select
+        *
+        from submit
+        order by id desc
+        <!--        <if test="start!=null and limit!=null">-->
+        <!--            limit #{start},#{limit}-->
+        <!--        </if>-->
+    </select>
+    <update id="updateByPrimaryKeySelective" parameterType="com.sevenbulb.webproject.entity.UserForm">
+        update submit
+        <set>
+            <if test="Title != null">
+                title = #{Title},
+            </if>
+            <if test="Contributor != null">
+                contributor = #{Contributor},
+            </if>
+            <if test="Email != null">
+                email = #{Email},
+            </if>
+            <if test="Source != null">
+                source = #{Source},
+            </if>
+            <if test="URL != null">
+                url = #{URL},
+            </if>
+            <if test="ToolFile != null">
+                tool_file = #{ToolFile},
+            </if>
+            <if test="Thumbnail != null">
+                thumbnail = #{Thumbnail},
+            </if>
+            <if test="Industry != null">
+                industry = #{Industry},
+            </if>
+            <if test="Themes != null">
+                themes = #{Themes},
+            </if>
+            <if test="Organizations != null">
+                organizations = #{Organizations},
+            </if>
+            <if test="Country != null">
+                country =#{Country},
+            </if>
+            <if test="Region != null">
+                region = #{Region},
+            </if>
+            <if test="Language != null">
+                language = #{Language},
+            </if>
+            <if test="Type != null">
+                type = #{Type},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+        </set>
+        where id = #{FormId}
+    </update>
+    <update id="batchFormStatus">
+        update submit
+        set is_review=#{formStatus} where id in (#{id})
+
+    </update>
+</mapper>

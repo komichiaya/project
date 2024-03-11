@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sevenbulb.webproject.dao.AdminUserMapper">
+    <resultMap id="BaseResultMap" type="com.sevenbulb.webproject.entity.AdminUser">
+        <id column="user_id" jdbcType="BIGINT" property="adminUserId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="loginUserName"/>
+        <result column="user_password" jdbcType="VARCHAR" property="loginPassword"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        user_id, user_name, user_password
+    </sql>
+
+    <select id="login" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from users
+        where user_name=#{userName} AND user_password=#{password}
+
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from users
+        where user_id = #{adminUserId}
+    </select>
+    <insert id="insert" parameterType="com.sevenbulb.webproject.entity.AdminUser">
+        insert into users (user_id, user_name, user_password)
+        values (#{adminUserId}, #{loginUserName}, #{loginPassword})
+    </insert>
+    <insert id="insertSelective" parameterType="com.sevenbulb.webproject.entity.AdminUser">
+        insert into users
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="adminUserId != null">
+                user_id,
+            </if>
+            <if test="loginUserName != null">
+                user_name,
+            </if>
+            <if test="loginPassword != null">
+                user_password,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="adminUserId != null">
+                #{adminUserId},
+            </if>
+            <if test="loginUserName != null">
+                #{loginUserName},
+            </if>
+            <if test="loginPassword != null">
+                #{loginPassword},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.sevenbulb.webproject.entity.AdminUser">
+        update users
+        <set>
+            <if test="loginUserName != null">
+                user_name = #{loginUserName},
+            </if>
+            <if test="loginPassword != null">
+                user_password = #{loginPassword},
+            </if>
+
+        </set>
+        where user_id = #{adminUserId}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.sevenbulb.webproject.entity.AdminUser">
+        update users
+        set user_name     = #{loginUserName},
+            user_password = #{loginPassword},
+            where user_id = #{adminUserId}
+    </update>
+</mapper>

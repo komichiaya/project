@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sevenbulb.webproject.dao.AdminUserTokenMapper">
+    <resultMap id="BaseResultMap" type="com.sevenbulb.webproject.entity.AdminUserToken">
+        <id column="user_id" jdbcType="BIGINT" property="adminUserId" />
+        <result column="token" jdbcType="VARCHAR" property="token" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        user_id, token, update_time, expire_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from users_token
+        where user_id = #{adminUserId}
+    </select>
+    <select id="selectByToken" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from users_token
+        where token = #{token}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from users_token
+        where user_id = #{adminUserId}
+    </delete>
+    <insert id="insert" parameterType="com.sevenbulb.webproject.entity.AdminUserToken">
+        insert into users_token (user_id, token, update_time,
+                                                     expire_time)
+        values (#{adminUserId}, #{token}, #{updateTime},
+                #{expireTime})
+    </insert>
+    <insert id="insertSelective" parameterType="com.sevenbulb.webproject.entity.AdminUserToken">
+        insert into users_token
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="adminUserId != null">
+                user_id,
+            </if>
+            <if test="token != null">
+                token,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="expireTime != null">
+                expire_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="adminUserId != null">
+                #{adminUserId},
+            </if>
+            <if test="token != null">
+                #{token},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+            <if test="expireTime != null">
+                #{expireTime},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.sevenbulb.webproject.entity.AdminUserToken">
+        update users_token
+        <set>
+            <if test="token != null">
+                token = #{token},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="expireTime != null">
+                expire_time = #{expireTime},
+            </if>
+        </set>
+        where user_id = #{adminUserId}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.sevenbulb.webproject.entity.AdminUserToken">
+        update users_token
+        set token = #{token},
+            update_time = #{updateTime},
+            expire_time = #{expireTime}
+        where user_id = #{adminUserId}
+    </update>
+</mapper>
