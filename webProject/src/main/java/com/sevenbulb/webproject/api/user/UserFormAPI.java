@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Random;
 
@@ -56,6 +58,9 @@ public class UserFormAPI {
             //生成文件名称通用方法
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
             Random r = new Random();
+
+
+
 
             StringBuilder tempName = new StringBuilder();
             StringBuilder tempName1 = new StringBuilder();
@@ -93,6 +98,7 @@ public class UserFormAPI {
 
                 userForm.setImgFile((String) resultSuccess.getData());
                 userForm.setToolFile((String) resultSuccess1.getData());
+                logger.info("userForm:"+userForm.getCreateTime());
 
                 String result = userFormService.saveUserForm(userForm);
                 if (ServiceResultEnum.SUCCESS.getResult().equals(result)) {
@@ -108,6 +114,7 @@ public class UserFormAPI {
         }else{
             UserForm userForm = new UserForm();
             BeanUtil.copyProperties(userFormParam, userForm);
+            logger.info("userForm:"+userForm.getCreateTime());
             String result = userFormService.saveUserForm(userForm);
             if (ServiceResultEnum.SUCCESS.getResult().equals(result)) {
                 return ResultGenerator.genSuccessResult();

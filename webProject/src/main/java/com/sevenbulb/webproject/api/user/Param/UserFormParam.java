@@ -52,4 +52,11 @@ public class UserFormParam {
     @NotEmpty(message = "语言不能为空")
     private String Language;
 
+    private int year_of_publication;
+    private int display_contributor;
+    private String other_organization;
+    private String other_theme;
+    private String other_type;
+    private String other_languages;
+    private String other_industry;
 }

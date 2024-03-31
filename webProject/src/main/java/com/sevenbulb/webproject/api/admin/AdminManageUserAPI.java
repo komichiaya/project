@@ -1,8 +1,11 @@
 package com.sevenbulb.webproject.api.admin;
 
+import com.sevenbulb.webproject.common.ServiceResultEnum;
 import com.sevenbulb.webproject.config.annotation.TokenToAdminUser;
 import com.sevenbulb.webproject.api.admin.Param.AdminLoginParam;
+import com.sevenbulb.webproject.entity.AdminUser;
 import com.sevenbulb.webproject.entity.AdminUserToken;
+import com.sevenbulb.webproject.entity.LoginReturn;
 import com.sevenbulb.webproject.service.AdminUserService;
 import com.sevenbulb.webproject.util.Result;
 import com.sevenbulb.webproject.util.ResultGenerator;
@@ -28,13 +31,27 @@ public class AdminManageUserAPI {
         String loginResult = adminUserService.login(adminLoginParam.getUser_name(),adminLoginParam.getUser_password());
         logger.info("manage login api,adminName={},loginResult={}",adminLoginParam.getUser_name(),loginResult);
         //登录成功
+        LoginReturn loginReturn = new LoginReturn();
         if(StringUtils.hasLength(loginResult) && loginResult.length() == Constants.TOKEN_LENGTH){
             Result result = ResultGenerator.genSuccessResult();
             result.setData(loginResult);
+
             return result;
         }
         //登录失败
         return ResultGenerator.genFailResult(loginResult);
+    }
+    @RequestMapping(value = "/adminUser/profile", method = RequestMethod.GET)
+    public Result profile(@TokenToAdminUser AdminUserToken adminUser) {
+        logger.info("adminUser:{}", adminUser.toString());
+        AdminUser adminUserEntity = adminUserService.getUserDetailById(adminUser.getAdminUserId());
+        if (adminUserEntity != null) {
+            adminUserEntity.setLoginPassword("******");
+            Result result = ResultGenerator.genSuccessResult();
+            result.setData(adminUserEntity);
+            return result;
+        }
+        return ResultGenerator.genFailResult(ServiceResultEnum.DATA_NOT_EXIST.getResult());
     }
 
     @RequestMapping(value = "/adminUser/logout", method = RequestMethod.DELETE)

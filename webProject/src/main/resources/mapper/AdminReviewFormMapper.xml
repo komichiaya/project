@@ -20,6 +20,13 @@
         <result column="Language" jdbcType="VARCHAR" property="Language"/>
         <result column="ReviewType" jdbcType="INTEGER" property="review_Type"/>
         <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="year_of_publication" jdbcType="INTEGER" property="year_of_publication"/>
+        <result column="display_contributor" jdbcType="INTEGER" property="display_contributor"/>
+        <result column="other_organization" jdbcType="VARCHAR" property="other_organization"/>
+        <result column="other_theme" jdbcType="VARCHAR" property="other_theme"/>
+        <result column="other_type" jdbcType="VARCHAR" property="other_type"/>
+        <result column="other_languages" jdbcType="VARCHAR" property="other_languages"/>
+        <result column="other_industry" jdbcType="VARCHAR" property="other_industry"/>
     </resultMap>
     <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sevenbulb.webproject.entity.UserForm">
         <result column="form_detail_content" jdbcType="LONGVARCHAR" property="formDetailContent"/>
@@ -85,6 +92,28 @@
             </if>
             <if test="createTime != null">
                 create_time = #{createTime},
+            </if>
+
+            <if test="year_of_publication != null">
+                year_of_publication = #{year_of_publication},
+            </if>
+            <if test="display_contributor != null">
+                display_contributor = #{display_contributor},
+            </if>
+            <if test="other_organization != null">
+                other_organization = #{other_organization},
+            </if>
+            <if test="other_theme != null">
+                other_theme = #{other_theme},
+            </if>
+            <if test="other_type != null">
+                other_type= #{other_type},
+            </if>
+            <if test="other_languages != null">
+                other_languages =#{other_languages},
+            </if>
+            <if test="other_industry != null">
+                other_industry = #{other_industry},
             </if>
         </set>
         where id = #{FormId}

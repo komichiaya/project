@@ -5,6 +5,7 @@ import com.sevenbulb.webproject.dao.AdminUserMapper;
 import com.sevenbulb.webproject.dao.AdminUserTokenMapper;
 import com.sevenbulb.webproject.entity.AdminUser;
 import com.sevenbulb.webproject.entity.AdminUserToken;
+import com.sevenbulb.webproject.entity.LoginReturn;
 import com.sevenbulb.webproject.service.AdminUserService;
 import com.sevenbulb.webproject.util.NumberUtil;
 import com.sevenbulb.webproject.util.SystemUtil;
@@ -28,6 +29,14 @@ public class AdminUserServiceImpl implements AdminUserService {
         return adminUserTokenMapper.deleteByPrimaryKey(adminUserId) > 0;
     }
 
+
+
+    @Override
+    public AdminUser getUserDetailById(Long loginUserId) {
+        return adminUserMapper.selectByPrimaryKey(loginUserId);
+    }
+
+
     @Override
     public String login(String username, String password) {
         AdminUser loginAdminUser = adminUserMapper.login(username, password);
@@ -36,6 +45,7 @@ public class AdminUserServiceImpl implements AdminUserService {
             String token = getNewToken(System.currentTimeMillis() + "", loginAdminUser.getAdminUserId());
             AdminUserToken adminUserToken = adminUserTokenMapper.selectByPrimaryKey(loginAdminUser.getAdminUserId());
             Date now = new Date();
+
             Date expireTime = new Date(now.getTime() + 2 * 24 * 3600 * 1000);
             if (adminUserToken == null) {
                 adminUserToken = new AdminUserToken();
