@@ -4,6 +4,7 @@
     <resultMap id="BaseResultMap" type="com.sevenbulb.webproject.entity.AdminUser">
         <id column="user_id" jdbcType="BIGINT" property="adminUserId"/>
         <result column="user_name" jdbcType="VARCHAR" property="loginUserName"/>
+        <result column="user_level" jdbcType="INTEGER" property="userLevel"/>
         <result column="user_password" jdbcType="VARCHAR" property="loginPassword"/>
     </resultMap>
     <sql id="Base_Column_List">
@@ -19,10 +20,9 @@
     </select>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
+        select *
         from users
-        where user_id = #{adminUserId}
+        where user_id=#{adminUserId}
     </select>
     <insert id="insert" parameterType="com.sevenbulb.webproject.entity.AdminUser">
         insert into users (user_id, user_name, user_password)

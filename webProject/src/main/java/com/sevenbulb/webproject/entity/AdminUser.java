@@ -5,10 +5,8 @@ import lombok.Data;
 @Data
 public class AdminUser {
     private Long adminUserId;
-    public int userLevel;
-
+    private int userLevel;
     private String loginUserName;
-
     private String loginPassword;
 
 
