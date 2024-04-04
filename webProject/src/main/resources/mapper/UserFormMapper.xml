@@ -2,24 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sevenbulb.webproject.dao.UserFormMapper">
     <resultMap id="BaseResultMap" type="com.sevenbulb.webproject.entity.UserForm">
-        <id column="FormId" jdbcType="BIGINT" property="FormId"/>
-        <result column="Title" jdbcType="VARCHAR" property="Title"/>
-        <result column="Description" jdbcType="LONGVARCHAR" property="Description"/>
-        <result column="Contributor" jdbcType="VARCHAR" property="Contributor"/>
-        <result column="Email" jdbcType="VARCHAR" property="Email"/>
-        <result column="Source" jdbcType="VARCHAR" property="Source"/>
-        <result column="URL" jdbcType="VARCHAR" property="URL"/>
-        <result column="ToolFile" jdbcType="VARCHAR" property="ToolFile"/>
-        <result column="ImgFile" jdbcType="VARCHAR" property="ImgFile"/>
-        <result column="Thumbnail" jdbcType="VARCHAR" property="Thumbnail"/>
-        <result column="Industry" jdbcType="VARCHAR" property="Industry"/>
-        <result column="Type" jdbcType="VARCHAR" property="Type"/>
-        <result column="Themes" jdbcType="VARCHAR" property="Themes"/>
-        <result column="Organizations" jdbcType="VARCHAR" property="Organizations"/>
-        <result column="Country" jdbcType="VARCHAR" property="Country"/>
-        <result column="Region" jdbcType="VARCHAR" property="Region"/>
-        <result column="Language" jdbcType="VARCHAR" property="Language"/>
-        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="tool_title" jdbcType="VARCHAR" property="tool_title"/>
+        <result column="tool_description" jdbcType="LONGVARCHAR" property="tool_description"/>
+        <result column="type_of_tool" jdbcType="VARCHAR" property="type_of_tool"/>
+        <result column="company" jdbcType="VARCHAR" property="company"/>
+        <result column="contributor" jdbcType="VARCHAR" property="contributor"/>
+        <result column="email_address" jdbcType="VARCHAR" property="email_address"/>
+        <result column="source_of_tool" jdbcType="VARCHAR" property="source_of_tool"/>
+        <result column="url_link_to_tool" jdbcType="VARCHAR" property="url_link_to_tool"/>
+        <result column="upload_file" jdbcType="VARCHAR" property="upload_file"/>
+        <result column="upload_image" jdbcType="VARCHAR" property="upload_image"/>
+        <result column="industry" jdbcType="VARCHAR" property="industry"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="theme" jdbcType="VARCHAR" property="theme"/>
+        <result column="organization" jdbcType="VARCHAR" property="organization"/>
+        <result column="countries" jdbcType="VARCHAR" property="countries"/>
+        <result column="region" jdbcType="VARCHAR" property="region"/>
+        <result column="languages" jdbcType="VARCHAR" property="languages"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
         <result column="year_of_publication" jdbcType="INTEGER" property="year_of_publication"/>
         <result column="display_contributor" jdbcType="INTEGER" property="display_contributor"/>
         <result column="other_organization" jdbcType="VARCHAR" property="other_organization"/>
@@ -32,56 +33,62 @@
     <insert id="insertSelective" parameterType="com.sevenbulb.webproject.entity.UserForm">
         insert into submit
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="FormId != null">
+            <if test="id != null">
                 id,
             </if>
-            <if test="Title!= null">
-                title,
+            <if test="tool_title!= null">
+                tool_title,
             </if>
-            <if test="Description != null">
-                description,
+            <if test="tool_description != null">
+                tool_description,
             </if>
-            <if test="Contributor != null">
+            <if test = "type_of_tool != null">
+                type_of_tool
+            </if>
+            <if test = "company != null">
+                company
+            </if>
+            <if test="contributor != null">
                 contributor,
             </if>
-            <if test="Email != null">
-                email,
+            <if test="email_address != null">
+                email_address,
             </if>
-            <if test="Source!= null">
-                source,
+            <if test="source_of_tool!= null">
+                source_of_tool,
             </if>
-            <if test="URL != null">
-                url,
+            <if test="url_link_to_tool != null">
+                url_link_to_tool,
             </if>
-            <if test="ToolFile != null">
-                tool_file,
+            <if test="upload_file != null">
+                upload_file,
             </if>
-            <if test="Thumbnail != null">
-                thumbnail,
+            <if test="upload_image != null">
+                upload_image,
             </if>
-            <if test="Industry != null">
+            <if test="industry != null">
                 industry,
             </if>
-            <if test="Themes != null">
-                themes,
+            <if test="type != null">
+                type,
             </if>
-            <if test="Organizations != null">
-                organizations,
+            <if test="theme != null">
+                theme,
             </if>
-            <if test="Country != null">
-                country,
+            <if test="organization != null">
+                organization,
             </if>
-            <if test="Region != null">
+            <if test="countries != null">
+                countries,
+            </if>
+            <if test="region != null">
                 region,
             </if>
-            <if test="Language != null">
-                language,
+            <if test="languages != null">
+                languages,
             </if>
-            <if test="createTime != null">
-                createtime,
-            </if>
-            <if test="ImgFile != null">
-                img_file,
+            <if test="create_time != null">
+                create_time,
             </if>
 
             <if test="year_of_publication != null">
@@ -107,56 +114,62 @@
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="FormId != null">
+            <if test="id != null">
                 #{id},
             </if>
-            <if test="Title!= null">
-                #{Title},
+            <if test="tool_title!= null">
+                #{tool_title},
             </if>
-            <if test="Description != null">
-                #{Description},
+            <if test="tool_description != null">
+                #{tool_description},
             </if>
-            <if test="Contributor != null">
-                #{Contributor},
+            <if test = "type_of_tool != null">
+                #{type_of_tool}
             </if>
-            <if test="Email != null">
-                #{Email},
+            <if test = "company != null">
+                #{company}
             </if>
-            <if test="Source!= null">
-                #{Source},
+            <if test="contributor != null">
+                #{contributor},
             </if>
-            <if test="URL != null">
-                #{URL},
+            <if test="email_address != null">
+                #{email_address},
             </if>
-            <if test="ToolFile != null">
-                #{ToolFile},
+            <if test="source_of_tool!= null">
+                #{source_of_tool},
             </if>
-            <if test="Thumbnail != null">
-                #{Thumbnail},
+            <if test="url_link_to_tool != null">
+                #{url_link_to_tool},
             </if>
-            <if test="Industry != null">
-                #{Industry},
+            <if test="upload_file != null">
+                #{upload_file},
             </if>
-            <if test="Themes != null">
-                #{Themes},
+            <if test="upload_image != null">
+                #{upload_image},
             </if>
-            <if test="Organizations != null">
-                #{Organizations},
+            <if test="industry != null">
+                #{industry},
             </if>
-            <if test="Country != null">
-                #{Country},
+            <if test="type != null">
+                #{type},
             </if>
-            <if test="Region != null">
-                #{Region},
+            <if test="theme != null">
+                #{theme},
             </if>
-            <if test="Language != null">
-                #{Language},
+            <if test="organization != null">
+                #{organization},
             </if>
-            <if test="createTime != null">
-                #{createTime},
+            <if test="countries != null">
+                #{countries},
             </if>
-            <if test="ImgFile != null">
-                #{ImgFile},
+            <if test="region != null">
+                #{region},
+            </if>
+            <if test="languages != null">
+                #{languages},
+            </if>
+            <if test="create_time != null">
+                #{create_time},
             </if>
 
             <if test="year_of_publication != null">

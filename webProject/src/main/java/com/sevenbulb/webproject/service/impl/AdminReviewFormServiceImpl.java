@@ -16,7 +16,7 @@ public class AdminReviewFormServiceImpl implements AdminReviewFormService {
     private AdminReviewFormMapper adminReviewFormMapper;
     @Override
     public String updateFormInfo(UserForm form) {
-        UserForm temp = adminReviewFormMapper.selectByPrimaryKey(form.getFormId());
+        UserForm temp = adminReviewFormMapper.selectByPrimaryKey(form.getId());
         if (temp == null) {
             return ServiceResultEnum.DATA_NOT_EXIST.getResult();
         }

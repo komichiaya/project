@@ -4,22 +4,24 @@ import lombok.Data;
 
 @Data
 public class UserFormParam {
-    private Long formId;
-    private String title;
-    private String description;
+    private Long id;
+    private String tool_title;
+    private String type_of_tool;
+    private String tool_description;
     private String contributor;
-    private String email;
-    private String source;
-    private String url;
-    private String toolFile;
-    private String thumbnail;
-    private String type;
+    private String email_address;
+    private String company;
+    private String source_of_tool;
+    private String url_link_to_tool;
+    private String upload_file;
+    private String upload_image;
     private String industry;
-    private String themes;
-    private String organizations;
-    private String country;
+    private String theme;
+    private String organization;
+    private String countries;
     private String region;
-    private String language;
+    private String languages;
+    private String type;
     private int year_of_publication;
     private int display_contributor;
     private String other_organization;

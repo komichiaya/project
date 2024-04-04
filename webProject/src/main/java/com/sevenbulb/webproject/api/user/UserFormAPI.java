@@ -96,9 +96,8 @@ public class UserFormAPI {
                 UserForm userForm = new UserForm();
                 BeanUtil.copyProperties(userFormParam, userForm);
 
-                userForm.setImgFile((String) resultSuccess.getData());
-                userForm.setToolFile((String) resultSuccess1.getData());
-                logger.info("userForm:"+userForm.getCreateTime());
+                userForm.setUpload_image((String) resultSuccess.getData());
+                userForm.setUpload_file((String) resultSuccess1.getData());
 
                 String result = userFormService.saveUserForm(userForm);
                 if (ServiceResultEnum.SUCCESS.getResult().equals(result)) {
@@ -114,7 +113,6 @@ public class UserFormAPI {
         }else{
             UserForm userForm = new UserForm();
             BeanUtil.copyProperties(userFormParam, userForm);
-            logger.info("userForm:"+userForm.getCreateTime());
             String result = userFormService.saveUserForm(userForm);
             if (ServiceResultEnum.SUCCESS.getResult().equals(result)) {
                 return ResultGenerator.genSuccessResult();
