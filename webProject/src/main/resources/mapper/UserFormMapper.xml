@@ -42,11 +42,11 @@
             <if test="tool_description != null">
                 tool_description,
             </if>
-            <if test = "type_of_tool != null">
-                type_of_tool
+            <if test="type_of_tool != null">
+                type_of_tool,
             </if>
-            <if test = "company != null">
-                company
+            <if test="company != null">
+                company,
             </if>
             <if test="contributor != null">
                 contributor,
@@ -123,11 +123,11 @@
             <if test="tool_description != null">
                 #{tool_description},
             </if>
-            <if test = "type_of_tool != null">
-                #{type_of_tool}
+            <if test="type_of_tool != null">
+                #{type_of_tool},
             </if>
-            <if test = "company != null">
-                #{company}
+            <if test="company != null">
+                #{company},
             </if>
             <if test="contributor != null">
                 #{contributor},
